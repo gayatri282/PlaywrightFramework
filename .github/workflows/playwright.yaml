@@ -23,7 +23,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment: ${{ github.event.inputs.environment || 'QA' }}
+    environment: ${{ github.event.inputs.environment || 'qa' }}
 
     steps:
       - name: Checkout code
@@ -56,7 +56,7 @@ jobs:
       - name: Run tests
         run: npx playwright test --project=chromium
         env:
-          ENV: ${{ github.event.inputs.environment || 'QA' }}
+          ENV: ${{ github.event.inputs.environment || 'qa' }}
           BASE_URL: ${{ secrets.BASE_URL }}
           USERNAME: ${{ secrets.APP_USERNAME }}
           PASSWORD: ${{ secrets.APP_PASSWORD }}
