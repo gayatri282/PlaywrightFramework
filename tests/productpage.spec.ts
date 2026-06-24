@@ -1,5 +1,4 @@
 import { test, expect } from '../src/fixtures/pagefixtures'
-import { HomePage } from '../src/pages/HomePage';
 
 
 // creds: testing123@email.com, test@123
