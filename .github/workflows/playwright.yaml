@@ -53,12 +53,16 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
-      - name: Run tests
-        run: npx playwright test --project=chromium
       - name: Check environment variables
+        env:
+          APP_USERNAME: ${{ secrets.APP_USERNAME }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: |
-        echo "APP_USERNAME exists: $([ -n "$APP_USERNAME" ] && echo yes || echo no)"
-        echo "APP_PASSWORD exists: $([ -n "$APP_PASSWORD" ] && echo yes || echo no)"
+          echo "APP_USERNAME exists: $([ -n "$APP_USERNAME" ] && echo yes || echo no)"
+          echo "APP_PASSWORD exists: $([ -n "$APP_PASSWORD" ] && echo yes || echo no)"
+
+      - name: Run tests
+        run: npx playwright test --project=chromium 
         env:
           ENV: ${{ github.event.inputs.environment || 'qa' }}
           BASE_URL: ${{ secrets.BASE_URL }}
