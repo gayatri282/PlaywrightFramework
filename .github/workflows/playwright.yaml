@@ -55,6 +55,10 @@ jobs:
 
       - name: Run tests
         run: npx playwright test --project=chromium
+      - name: Check environment variables
+        run: |
+        echo "APP_USERNAME exists: $([ -n "$APP_USERNAME" ] && echo yes || echo no)"
+        echo "APP_PASSWORD exists: $([ -n "$APP_PASSWORD" ] && echo yes || echo no)"
         env:
           ENV: ${{ github.event.inputs.environment || 'qa' }}
           BASE_URL: ${{ secrets.BASE_URL }}
