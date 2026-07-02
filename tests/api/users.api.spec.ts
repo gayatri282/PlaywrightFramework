@@ -1,6 +1,7 @@
 import test from "@playwright/test";
 
-let AUTH_TOKEN = { Authorization: 'Bearer 425da840cf3e15fc1830150361d4f13be8bc28f12d9469cfe80cf8c6ab2ce2bf' };
+let token = process.env.API_TOKEN;
+let AUTH_TOKEN = { Authorization: `Bearer ${token}` };
 
 test('get user test', async ({ request }) => {
     let response = await request.get('https://gorest.co.in/public/v2/users/8501924', {

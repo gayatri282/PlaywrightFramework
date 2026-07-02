@@ -43,4 +43,10 @@ export class Apihelper {
             body: await response.json()
         }
     }
+
+    async get(endPoint: string,headers?: Record<string,string>){
+        let response = await this.request.get(`${this.baseURL}${endPoint}`,{
+            headers: headers
+        })
+    }
 }

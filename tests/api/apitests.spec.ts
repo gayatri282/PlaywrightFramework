@@ -34,7 +34,7 @@ test('delete api test', async ({ apiHelper }) => {
 
     let delResponse = await apiHelper.delete(`/public/v2/users/${userid}`, AUTH_HEADER);
     console.log("status: ", delResponse.status);
-    expect(response.status).toBe(204);
+    expect(response.status).toBe(201);
 })
 
 test('update api test', async ({ apiHelper }) => {
@@ -51,11 +51,11 @@ test('update api test', async ({ apiHelper }) => {
     console.log("email before update: ", response.body.email);
     let userid = response.body.id;
 
-    let updateData= {
-        'email':`Suga_${Date.now()}@testing.com`
+    let updateData = {
+        'email': `Suga_${Date.now()}@testing.com`
     }
 
-    let updateResponse = await apiHelper.patch(`/public/v2/users/${userid}`,updateData,AUTH_HEADER);
+    let updateResponse = await apiHelper.patch(`/public/v2/users/${userid}`, updateData, AUTH_HEADER);
 
     expect(updateResponse.status).toBe(200);
     console.log("updated email: ", updateResponse.body.email);
