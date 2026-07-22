@@ -15,7 +15,7 @@ export class Apihelper {
             data: data,
             headers: headers
         });
-        console.log('response: ', await response.json());
+        console.log('response: ',await response.json());
         return {
             status: response.status(),
             body: await response.json()
@@ -47,6 +47,10 @@ export class Apihelper {
     async get(endPoint: string,headers?: Record<string,string>){
         let response = await this.request.get(`${this.baseURL}${endPoint}`,{
             headers: headers
-        })
+        });
+        return{
+            status: response.status(),
+            body: await response.json()
+        }
     }
 }
