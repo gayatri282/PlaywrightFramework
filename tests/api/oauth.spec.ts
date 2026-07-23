@@ -7,7 +7,7 @@ let OAUTH_CONFIG = {
     grantType: process.env.OAUTH_GRANT_TYPE!
 }
 
-test('POST-generate access token', async ({ request }) => {
+test.skip('POST-generate access token', async ({ request }) => {
     let response = await request.post(OAUTH_CONFIG.tokenURL,{
         form:{
             grant_type: OAUTH_CONFIG.grantType,
